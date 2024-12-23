@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuestBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c461115e30bba95c798d0be5051c31890559c2a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2eb5181b11fbaaceb7a4b07de3e4b74677a30ab8")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuestBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuestBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
