@@ -1,5 +1,0 @@
-C:\Users\nidha\OneDrive\Bureau\QuestBot\obj\Debug\net8.0\QuestBot.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\nidha\OneDrive\Bureau\QuestBot\obj\Debug\net8.0\QuestBot.AssemblyInfoInputs.cache
-C:\Users\nidha\OneDrive\Bureau\QuestBot\obj\Debug\net8.0\QuestBot.AssemblyInfo.cs
-C:\Users\nidha\OneDrive\Bureau\QuestBot\obj\Debug\net8.0\QuestBot.csproj.CoreCompileInputs.cache
-C:\Users\nidha\OneDrive\Bureau\QuestBot\obj\Debug\net8.0\QuestBot.sourcelink.json

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-
-public class ChatHistory{
-    private List<Message> _messages;
+namespace QuestBot.Lib
+{
+    public class ChatHistory{
+    private readonly List<Message> _messages;
     public ChatHistory()
     {
         _messages = new List<Message>();
@@ -14,4 +15,5 @@ public class ChatHistory{
     public IEnumerable<Message> GetMessages(){
         return _messages;
     }
+}
 }

@@ -11,7 +11,7 @@
         "projectName": "QuestBot",
         "projectPath": "C:\\Users\\nidha\\OneDrive\\Bureau\\QuestBot\\QuestBot.csproj",
         "packagesPath": "C:\\Users\\nidha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nidha\\OneDrive\\Bureau\\QuestBot\\obj\\",
+        "outputPath": "C:\\Users\\nidha\\OneDrive\\Bureau\\QuestBot\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,22 @@
             "Godot.NET.Sdk": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "Godot.SourceGenerators": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "GodotSharp": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "GodotSharpEditor": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

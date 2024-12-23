@@ -1,37 +1,46 @@
 using Godot;
-using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 
-public class Chatbot : Control
+
+namespace QuestBot
 {
-    private TextEdit _chatDisplay;
-    private LineEdit _userInput;
-    private Button _sendButton;
-    private BotLogic _botLogic;
-
-    public override void _Ready()
+    public partial class Chatbot : Control
     {
-        _chatDisplay = GetNode<TextEdit>("ChatDisplay");
-        _userInput = GetNode<LineEdit>("UserInput");
-        _sendButton = GetNode<Button>("SendButton");
-        _botLogic = new BotLogic();
+        private TextEdit? _chatDisplay;
+        private LineEdit? _userInput;
+        private Button? _sendButton;
+        private BotLogic? _botLogic;
 
-        _sendButton.Connect("pressed",this ,nameof(OnSendButtonPressed));
-        _chatDisplay.Text = "Chatbot: Hello! How can I help you today?";
-
-
-    }
-    private void OnSendButtonPressed()
-    {
-        string userMessage = _userInput.Text.TrimEdges();
-        if(!string.IsNullOrEmpty(userMessage))
+        public override void _Ready()
         {
-            
-        _chatDisplay.Text += $"\nYou:{userMessage}";
-       
-        string botResponse = _botLogic.GetResponse ;
-        _chatDisplay.Text += $"\nChatbot:{botResponse} ";
-        _userInput.Clear();
+            _chatDisplay = GetNode<TextEdit>("ChatDisplay");
+            _userInput = GetNode<LineEdit>("UserInput");
+            _sendButton = GetNode<Button>("SendButton");
+            _botLogic = new BotLogic();
+
+            _sendButton.Connect("pressed", Callable.From(OnSendButtonPressed));
+            _chatDisplay.Text = "Chatbot: Hello! How can I help you today?";
+
+
+        }
+        private void OnSendButtonPressed()
+        {
+            if (_userInput != null && _chatDisplay != null)
+            {
+                string userMessage = _userInput.Text.Trim();
+                if (!string.IsNullOrEmpty(userMessage))
+                {
+                    _chatDisplay.Text += $"\nYou:{userMessage}";
+                
+                    if (_botLogic != null)
+                    {
+                        string botResponse = _botLogic.GetResponse(userMessage);
+                        _chatDisplay.Text += $"\nChatbot:{botResponse} ";
+                    }
+                    _userInput.Clear();
+                }
+            }
+            }
         }
     }
-}
