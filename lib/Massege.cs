@@ -2,32 +2,61 @@ using System;
 
 namespace QuestBot.Lib
 {
-    public class Message
+    public class Message : IEquatable<Message>
     {
-        // Propriétés auto-implémentées
         public string Author { get; }
         public string Content { get; }
         public DateTime TimeSent { get; }
-        public Guid MessageId { get; } // Identifiant unique pour chaque message
+        public Guid MessageId { get; }
+        public bool IsRead { get; private set; } // Indique si le message a été lu
 
-        // Constructeur avec validation
-        public Message(string author, string content)
+        private const int MaxContentLength = 500; // Longueur maximale du contenu
+
+        private Message(string author, string content)
+        {
+            Author = author;
+            Content = content;
+            TimeSent = DateTime.UtcNow;
+            MessageId = Guid.NewGuid();
+            IsRead = false; // Par défaut, le message n'est pas lu
+        }
+
+        public static Message Create(string author, string content)
         {
             if (string.IsNullOrWhiteSpace(author))
                 throw new ArgumentException("Author cannot be null or empty.", nameof(author));
             if (string.IsNullOrWhiteSpace(content))
                 throw new ArgumentException("Content cannot be null or empty.", nameof(content));
+            if (content.Length > MaxContentLength)
+                throw new ArgumentException($"Content cannot exceed {MaxContentLength} characters.", nameof(content));
 
-            Author = author;
-            Content = content;
-            TimeSent = DateTime.UtcNow; // Utilisation de l'heure UTC
-            MessageId = Guid.NewGuid(); // Génération d'un identifiant unique
+            return new Message(author, content);
         }
 
-        // Méthode ToString pour un affichage facile
         public override string ToString()
         {
-            return $"{TimeSent:yyyy-MM-dd HH:mm:ss} - {Author}: {Content}";
+            return $"{TimeSent:yyyy-MM-dd HH:mm:ss} - {Author}: {Content} (Read: {IsRead})";
+        }
+
+        public void MarkAsRead()
+        {
+            IsRead = true; // Marquer le message comme lu
+        }
+
+        public bool Equals(Message other)
+        {
+            if (other is null) return false;
+            return MessageId.Equals(other.MessageId);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Message);
+        }
+
+        public override int GetHashCode()
+        {
+            return MessageId.GetHashCode();
         }
     }
 }
